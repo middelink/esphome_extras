@@ -44,6 +44,8 @@ class MAX72XXComponent : public PollingComponent,
 
   void draw_absolute_pixel_internal(int x, int y, Color color) override;
 
+  display::DisplayType get_display_type() override { return display::DisplayType::DISPLAY_TYPE_BINARY; }
+
  protected:
   int get_height_internal() override;
   int get_width_internal() override;
