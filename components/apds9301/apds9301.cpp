@@ -1,4 +1,5 @@
 #include "apds9301.h"
+#include "esphome/core/hal.h"
 #include "esphome/core/log.h"
 
 namespace esphome {
@@ -11,8 +12,8 @@ static const uint8_t APDS9301_REGISTER_TIMING = 0x81;
 static const uint8_t APDS9301_REGISTER_ID = 0x8A;
 static const uint8_t APDS9301_REGISTER_ADC = 0x8C | 0x20; // Use word transfers.
 
-static const uint8_t APDS9301_TIMING_BITS_LOOKUP_TABLE[] = {0x10, 0x11, 0x12, 0x00, 0x01, 0x02};
-static const uint32_t APDS9301_TIMING_MS_LOOKUP_TABLE[] PROGMEM = {402+5, 101+5, 14+5, 402+5, 101+5, 14+5};
+static const uint8_t PROGMEM APDS9301_TIMING_BITS_LOOKUP_TABLE[] = {0x10, 0x11, 0x12, 0x00, 0x01, 0x02};
+static const uint32_t PROGMEM APDS9301_TIMING_MS_LOOKUP_TABLE[] = {402+5, 101+5, 14+5, 402+5, 101+5, 14+5};
 
 void APDS9301Sensor::setup() {
   ESP_LOGCONFIG(TAG, "Setting up APDS9301 '%s'...", this->name_.c_str());
